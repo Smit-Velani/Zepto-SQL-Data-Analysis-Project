@@ -136,8 +136,11 @@ zepto_v2.csv
 zepto-analysis
 
 ├── LICENSE.txt
+
 ├── README.md
+
 ├── zepto_v2.csv
+
 ├──Zepto SQL Data Analysis Project.pdf
 
 └──Zepto_SQL_data_analysis.sql
