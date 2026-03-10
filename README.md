@@ -27,18 +27,18 @@ The dataset contains information about products sold on Zepto, including:
 
 Database Schema:
 
-CREATE TABLE zepto (
-sku_id SERIAL PRIMARY KEY,
-category VARCHAR(120),
-name VARCHAR(150) NOT NULL,
-mrp NUMERIC(8,2),
-discountPercent NUMERIC(5,2),
-availableQuantity INTEGER,
-discountedSellingPrice NUMERIC(8,2),
-weightInGms INTEGER,
-outOfStock BOOLEAN,
-quantity INTEGER
-);
+- CREATE TABLE zepto (
+  sku_id SERIAL PRIMARY KEY,
+  category VARCHAR(120),
+  name VARCHAR(150) NOT NULL,
+  mrp NUMERIC(8,2),
+  discountPercent NUMERIC(5,2),
+  availableQuantity INTEGER,
+  discountedSellingPrice NUMERIC(8,2),
+  weightInGms INTEGER,
+  outOfStock BOOLEAN,
+  quantity INTEGER
+  );
 
 
 Project Workflow
@@ -47,20 +47,20 @@ The project is divided into three main stages:
 
 1️⃣ Data Exploration
 
-Initial queries were used to understand the dataset.
-Count total records
-View sample data
-Check for null values
-Identify unique product categories
-Compare in-stock vs out-of-stock products
-Detect duplicate product names
+- Initial queries were used to understand the dataset.
+- Count total records
+- View sample data
+- Check for null values
+- Identify unique product categories
+- Compare in-stock vs out-of-stock products
+- Detect duplicate product names
 
 2️⃣ Data Cleaning
 
-Data cleaning ensures accurate analysis.
-Removed products where MRP = 0
-Converted price values from paise to rupees
-Verified price consistency after conversion
+- Data cleaning ensures accurate analysis.
+- Removed products where MRP = 0
+- Converted price values from paise to rupees
+- Verified price consistency after conversion
 
 3️⃣ Data Analysis
 
@@ -110,21 +110,21 @@ Key Insights
 
 Tools & Technologies Used
 
-PostgreSQL
-SQL
-pgAdmin
-GitHub
+- PostgreSQL
+- SQL
+- pgAdmin
+- GitHub
 
 Skills Demonstrated
 
 This project demonstrates the following data skills:
 
-SQL Data Exploration
-Data Cleaning
-Business Data Analysis
-Aggregations and Grouping
-Analytical Query Design
-Retail Data Insights
+- SQL Data Exploration
+- Data Cleaning
+- Business Data Analysis
+- Aggregations and Grouping
+- Analytical Query Design
+- Retail Data Insights
 
 Project Structure
 
