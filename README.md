@@ -127,12 +127,20 @@ Analytical Query Design
 Retail Data Insights
 
 Project Structure
+LICENSE.txt
+README.md
+Zepto SQL Data Analysis Project.pdf
+Zepto_SQL_data_analysis.sql
+zepto_v2.csv
 
 zepto-analysis
-│
-├── zepto_dataset.csv
-├── zepto_analysis.sql
-└── README.md
+
+├── LICENSE.txt
+├── README.md
+├── zepto_v2.csv
+├──Zepto SQL Data Analysis Project.pdf
+
+└──Zepto_SQL_data_analysis.sql
 
 Future Improvements
 
