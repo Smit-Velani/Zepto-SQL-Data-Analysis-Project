@@ -143,16 +143,11 @@ zepto-analysis
 
 Future Improvements
 
-Possible improvements for the project:
-
-Build a Power BI dashboard
-
-Add sales trend analysis
-
-Perform customer purchase analysis
-
-Implement predictive inventory forecasting
-
+- Possible improvements for the project:
+- Build a Power BI dashboard
+- Add sales trend analysis
+- Perform customer purchase analysis
+- Implement predictive inventory forecasting
 
 Author
 
