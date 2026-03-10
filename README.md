@@ -101,12 +101,12 @@ Highlight categories facing inventory shortages.
 
 Key Insights
 
-Some important insights derived from the analysis:
-Certain categories offer significantly higher average discounts.
-Some high-MRP products are frequently out of stock, indicating strong demand.
-Price-per-gram analysis reveals better value products for consumers.
-Inventory weight distribution varies significantly across categories.
-A small group of products contributes a large portion of potential revenue.
+- Some important insights derived from the analysis:
+- Certain categories offer significantly higher average discounts.
+- Some high-MRP products are frequently out of stock, indicating strong demand.
+- Price-per-gram analysis reveals better value products for consumers.
+- Inventory weight distribution varies significantly across categories.
+- A small group of products contributes a large portion of potential revenue.
 
 Tools & Technologies Used
 
