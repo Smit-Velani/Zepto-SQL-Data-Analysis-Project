@@ -1,158 +1,160 @@
-Zepto SQL Data Analysis Project
+# 🛒 Zepto E-Commerce SQL Data Analysis
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
+![pgAdmin](https://img.shields.io/badge/pgAdmin-336791?style=flat&logo=postgresql&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
 
-Project Overview
+> **Academic Project — SQL Data Analysis on Real-World E-Commerce Inventory Data**
 
-This project performs data exploration, cleaning, and analysis on Zepto product inventory data using SQL.
-The goal is to extract business insights related to product pricing, discounts, inventory availability, and revenue potential.
+An end-to-end SQL data analysis project on **Zepto product inventory data** using **PostgreSQL**. Covers data exploration, cleaning and 10 business analytical queries to extract insights on pricing, discounts, inventory availability and revenue potential across 14 product categories.
 
-The analysis simulates a real-world e-commerce retail dataset where SQL is used to understand product performance and inventory patterns.
+---
 
+## 📊 Key Numbers
 
-Dataset Description
+| Metric | Value |
+|--------|-------|
+| Total Products | 3,732 |
+| Product Categories | 14 |
+| In-Stock Products | 3,279 |
+| Out-of-Stock Products | 453 |
+| Top Discount | 51% |
+| Highest Avg Discount Category | Fruits & Vegetables (15.46%) |
+| Top Out-of-Stock Categories | Munchies & Cooking Essentials (64 each) |
 
-The dataset contains information about products sold on Zepto, including:
+---
 
-| Column                 | Description               |
-| ---------------------- | ------------------------- |
-| sku_id                 | Unique product identifier |
-| category               | Product category          |
-| name                   | Product name              |
-| mrp                    | Maximum retail price      |
-| discountPercent        | Discount applied          |
-| availableQuantity      | Available stock quantity  |
-| discountedSellingPrice | Final selling price       |
-| weightInGms            | Product weight            |
-| outOfStock             | Product stock status      |
-| quantity               | Pack quantity             |
+## 🚀 Quick Start
 
-Database Schema:
+```sql
+-- 1. Create the database table
+CREATE TABLE zepto (
+    sku_id SERIAL PRIMARY KEY,
+    category VARCHAR(120),
+    name VARCHAR(150) NOT NULL,
+    mrp NUMERIC(8,2),
+    discountPercent NUMERIC(5,2),
+    availableQuantity INTEGER,
+    discountedSellingPrice NUMERIC(8,2),
+    weightInGms INTEGER,
+    outOfStock BOOLEAN,
+    quantity INTEGER
+);
 
-- CREATE TABLE zepto (
-  sku_id SERIAL PRIMARY KEY,
-  category VARCHAR(120),
-  name VARCHAR(150) NOT NULL,
-  mrp NUMERIC(8,2),
-  discountPercent NUMERIC(5,2),
-  availableQuantity INTEGER,
-  discountedSellingPrice NUMERIC(8,2),
-  weightInGms INTEGER,
-  outOfStock BOOLEAN,
-  quantity INTEGER
-  );
+-- 2. Import dataset
+-- Load zepto_v2.csv into the table via pgAdmin
 
+-- 3. Run the analysis
+-- Execute Zepto_SQL_data_analysis.sql
+```
 
-Project Workflow
+---
 
-The project is divided into three main stages:
+## 📁 Project Structure
 
-1️⃣ Data Exploration
+```
+zepto-sql-analysis/
+│
+├── zepto_v2.csv                        ← Raw dataset
+├── Zepto_SQL_data_analysis.sql         ← All SQL queries
+├── Zepto_SQL_Data_Analysis_Project.pdf ← Full project report
+├── LICENSE.txt
+└── README.md
+```
 
-- Initial queries were used to understand the dataset.
-- Count total records
-- View sample data
-- Check for null values
-- Identify unique product categories
-- Compare in-stock vs out-of-stock products
-- Detect duplicate product names
+---
 
-2️⃣ Data Cleaning
+## ⚙️ Project Workflow
 
-- Data cleaning ensures accurate analysis.
-- Removed products where MRP = 0
-- Converted price values from paise to rupees
+### 1️⃣ Data Exploration
+| Query | Purpose |
+|-------|---------|
+| COUNT total records | 3,732 products found |
+| DISTINCT categories | 14 unique categories |
+| NULL value check | No missing values |
+| In-stock vs Out-of-stock | 3,279 in-stock · 453 out-of-stock |
+| Duplicate product names | Products with multiple SKUs identified |
+
+### 2️⃣ Data Cleaning
+- Removed products where **MRP = 0**
+- Converted price values from **paise → rupees** (`mrp / 100.0`)
 - Verified price consistency after conversion
 
-3️⃣ Data Analysis
+### 3️⃣ Data Analysis — 10 Business Queries
 
-The following analytical SQL queries were performed:
+| # | Query | Insight |
+|---|-------|---------|
+| Q1 | Top 10 Best Value Products by Discount | Max discount up to **51%** |
+| Q2 | High MRP Products Out of Stock | Products >₹300 unavailable |
+| Q3 | Estimated Revenue per Category | Munchies top revenue: **₹337,369** |
+| Q4 | Expensive Products with Low Discounts | MRP >₹500, discount <10% |
+| Q5 | Categories with Highest Avg Discounts | Fruits & Veg: **15.46%** avg discount |
+| Q6 | Price per Gram Analysis | Best value products identified |
+| Q7 | Product Weight Classification | Low / Medium / Bulk using CASE |
+| Q8 | Total Inventory Weight by Category | Weight distribution across categories |
+| Q9 | Top 10 Revenue Generating Products | Borges Olive Oil: **₹8,394** top revenue |
+| Q10 | Categories with Most Out-of-Stock | Munchies & Cooking Essentials: **64 each** |
 
-Q1. Top 10 Best Value Products by Discount
-Identify products offering the highest discounts.
+---
 
-Q2. High MRP Products that are Out of Stock
-Find expensive products currently unavailable.
+## 📐 Dataset Description
 
-Q3. Estimated Revenue per Category
-Calculate potential revenue using price and available quantity.
+| Column | Type | Description |
+|--------|------|-------------|
+| `sku_id` | SERIAL | Unique product identifier |
+| `category` | VARCHAR | Product category |
+| `name` | VARCHAR | Product name |
+| `mrp` | NUMERIC | Maximum retail price (₹) |
+| `discountPercent` | NUMERIC | Discount percentage |
+| `availableQuantity` | INTEGER | Available stock |
+| `discountedSellingPrice` | NUMERIC | Final selling price (₹) |
+| `weightInGms` | INTEGER | Product weight in grams |
+| `outOfStock` | BOOLEAN | Stock availability status |
+| `quantity` | INTEGER | Pack quantity |
 
-Q4. Expensive Products with Low Discounts
-Identify high priced products with minimal discounts.
+---
 
-Q5. Categories with Highest Average Discounts
-Analyze which product categories provide the best deals.
+## 🔑 Key Insights
 
-Q6. Price per Gram Analysis
-Calculate the best value products based on price per gram.
+- **Munchies** and **Cooking Essentials** face highest out-of-stock issues (64 products each) — indicating strong demand
+- **Fruits & Vegetables** offers highest average discount at **15.46%**
+- **Price-per-gram analysis** reveals fresh produce as best value for consumers
+- Top discount products reach up to **51% off** — driven by dairy and snack categories
+- A small group of products contributes majority of estimated revenue
 
-Q7. Product Weight Classification
-Classify products into:
-Low weight
-Medium weight
-Bulk weight
+---
 
-Q8. Total Inventory Weight by Category
-Calculate total inventory weight available for each category.
+## 💡 SQL Techniques Used
 
-Q9. Top Revenue Generating Products
-Identify products contributing the most potential revenue.
+| Technique | Usage |
+|-----------|-------|
+| `GROUP BY` + `ORDER BY` | Revenue and discount aggregation |
+| `CASE WHEN` | Weight classification (Low/Medium/Bulk) |
+| `HAVING` | Filtering duplicate SKUs |
+| `DISTINCT` | Unique product analysis |
+| `WHERE` subquery | Filtering high-value out-of-stock items |
+| `ROUND(AVG())` | Average discount per category |
+| `SUM(price * qty)` | Estimated revenue calculation |
+| `DELETE` + `UPDATE` | Data cleaning operations |
 
-Q10. Categories with Highest Out-of-Stock Products
-Highlight categories facing inventory shortages.
+---
 
-Key Insights
+## 🛠️ Tools & Technologies
 
-- Some important insights derived from the analysis:
-- Certain categories offer significantly higher average discounts.
-- Some high-MRP products are frequently out of stock, indicating strong demand.
-- Price-per-gram analysis reveals better value products for consumers.
-- Inventory weight distribution varies significantly across categories.
-- A small group of products contributes a large portion of potential revenue.
+| Tool | Purpose |
+|------|---------|
+| `PostgreSQL` | Database engine |
+| `pgAdmin` | Query execution & management |
+| `SQL` | Data exploration, cleaning & analysis |
+| `GitHub` | Version control & project hosting |
 
-Tools & Technologies Used
+---
 
-- PostgreSQL
-- SQL
-- pgAdmin
-- GitHub
+## 👤 Author
 
-Skills Demonstrated
+**Smit Velani**
+Data Science MS — Northeastern University
 
-This project demonstrates the following data skills:
+---
 
-- SQL Data Exploration
-- Data Cleaning
-- Business Data Analysis
-- Aggregations and Grouping
-- Analytical Query Design
-- Retail Data Insights
-
-Project Structure
-
-
-zepto-analysis
-
-├── LICENSE.txt
-
-├── README.md
-
-├── zepto_v2.csv
-
-├──Zepto SQL Data Analysis Project.pdf
-
-└──Zepto_SQL_data_analysis.sql
-
-Future Improvements
-
-- Possible improvements for the project:
-- Build a Power BI dashboard
-- Add sales trend analysis
-- Perform customer purchase analysis
-- Implement predictive inventory forecasting
-
-Author
-
-Smitkumar Velani
-
-Master's Student in Data Science
-
-Northeastern University, Boston
+*Built with PostgreSQL · SQL · pgAdmin*
